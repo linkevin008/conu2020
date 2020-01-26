@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <!-- <script src="../longpoll/browser.js"></script> -->
+    <script src="./browser.js"></script>
+  <!-- <link rel="stylesheet" href="../css/structure.css"> -->
+  <link rel="stylesheet" href="./css/structure.css">
+  <script src="./js/euphony.js" defer></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <!--    <script src="https://sdk.scdn.co/spotify-player.js"></script>-->
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+</head>
+
+<body>
+  <div id="container_main" class="container_mainhidden">
+    <div id="container_logo">
+      <div id="euphony_logo">
+        <!--                <img id="euphony_logo_img" src="../pictures/euphonylogo.png" alt="euphonylogo">-->
+      </div>
+    </div>
+
+
+
+    <div id="container_header" class="container">
+      <div id="container_searchbar">
+        <div id="container_searchbaraggregate">
+          <div id="container_searchlogo" class="container_searchlogo">
+            <img id="searchlogo" src="./pictures/searchlogo.png" alt="searchlogo">
+          </div>
+          <div id="container_textarea">
+            <input type="text" id="searchbar" rows="1">
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div id="container_sidebar" class="container_sidebarhidden">
+      <div id="container_menubutton" class="container_menubuttonhidden">
+        <div id="nav-icon3">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="container_browser" class="container">Browser
+      <div id="albums">
+
+      </div>
+      <div id="resizebar"></div>
+    </div>
+
+    <div id="container_player" class="container">
+      <div class="music-player">
+        <div id="container_artwork">
+          <img id="artwork" src="https://goo.gl/ly1Brx" alt="artwork">
+        </div>
+        <div class="content">
+          <div class="track"><i class="icon-music"></i>Track</div>
+          <div class="artist"><i class="icon-user"></i>Mount Kimbie</div>
+
+          <progress id="progress" value="0" max="100">
+            <div class="tracker active"></div>
+          </progress>
+          <div id="timestamp">
+            <span id="start">0:00</span>
+            <span id="stop" style="float:right;">4:42</span>
+          </div>
+          <div id="playcontrols">
+            <img id="skipback" class="playicon" src="./pictures/playicons/skipback.png" />
+            <img id="rewind" class="playicon" src="./pictures/playicons/rewind.png" />
+            <img id="play" class="playicon" src="./pictures/playicons/play.png" />
+            <img id="pause" class="playicon" src="./pictures/playicons/pause.png" />
+            <img id="forward" class="playicon" src="./pictures/playicons/forward.png" />
+            <img id="end" class="playicon" src="./pictures/playicons/end.png" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div id="container_social" class="container">Social
+      <form name="publish">
+        <input type="text" name="message" />
+        <input type="submit" value="Send" />
+      </form>
+
+      <div id="subscribe">
+      </div>
+
+      <script>
+        new PublishForm(document.forms.publish, 'publish');
+        // random url parameter to avoid any caching issues
+        new SubscribePane(document.getElementById('subscribe'), 'subscribe?random=' + Math.random());
+      </script>
+
+     
+    </div>
+
+
+
+  </div>
+  <script src="./js/spotifywebapiclient.js"></script>
+
+</body>
+
+</html>

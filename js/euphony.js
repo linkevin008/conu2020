@@ -159,11 +159,16 @@ function streamersLogoEventListener(){
     console.log("james");
     let spotlog = gebid('spotifylogo');
     let soundlogo = gebid('soundcloudlogo');
+    let applelogo = gebid('applemusiclogo');
     spotlog.addEventListener('click', function () {
         if(spotlog.className==="logodiv"){ this.setAttribute('class', 'logodivselected'); }
         else { spotlog.setAttribute('class', 'logodiv');}
     });
     soundlogo.addEventListener('click', function () {
+        if(soundlogo.className==="logodiv"){ this.setAttribute('class', 'logodivselected'); }
+        else { soundlogo.setAttribute('class', 'logodiv');}
+    });
+    applelogo.addEventListener('click', function () {
         if(soundlogo.className==="logodiv"){ this.setAttribute('class', 'logodivselected'); }
         else { soundlogo.setAttribute('class', 'logodiv');}
     });

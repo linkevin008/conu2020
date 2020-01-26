@@ -22,7 +22,7 @@ var redirect_uri = 'http://localhost:8888/html/euphony.html'; // Your redirect u
  * @param  {number} length The length of the string
  * @return {string} The generated string
  */
-var generateRandomString = function(length) {
+var generateRandomString = function (length) {
   var text = '';
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
@@ -37,10 +37,10 @@ var stateKey = 'spotify_auth_state';
 var app = express();
 
 app.use(express.static(__dirname))
-   .use(cors())
-   .use(cookieParser());
+  .use(cors())
+  .use(cookieParser());
 
-app.get('/login', function(req, res) {
+app.get('/login', function (req, res) {
 
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
@@ -57,7 +57,7 @@ app.get('/login', function(req, res) {
     }));
 });
 
-app.get('/callback', function(req, res) {
+app.get('/callback', function (req, res) {
 
   // your application requests refresh and access tokens
   // after checking the state parameter
@@ -86,21 +86,21 @@ app.get('/callback', function(req, res) {
       json: true
     };
 
-    request.post(authOptions, function(error, response, body) {
+    request.post(authOptions, function (error, response, body) {
       if (!error && response.statusCode === 200) {
 
         var access_token = body.access_token,
-            refresh_token = body.refresh_token;
+          refresh_token = body.refresh_token;
 
         var options = {
           url: 'https://api.spotify.com/v1/me',
-          headers: {   access_token },
+          headers: { access_token },
           json: true
         };
 
         // use the access token to access the Spotify Web API
-        request.get(options, function(error, response, body) {
-          console.log('helllllllllllllooooo123123123123')
+        request.get(options, function (error, response, body) {
+          // console.log('helllllllllllllooooo123123123123')
           console.log(body);
         });
 
@@ -120,7 +120,7 @@ app.get('/callback', function(req, res) {
   }
 });
 
-app.get('/refresh_token', function(req, res) {
+app.get('/refresh_token', function (req, res) {
 
   // requesting access token from refresh token
   var refresh_token = req.query.refresh_token;
@@ -134,7 +134,7 @@ app.get('/refresh_token', function(req, res) {
     json: true
   };
 
-  request.post(authOptions, function(error, response, body) {
+  request.post(authOptions, function (error, response, body) {
     if (!error && response.statusCode === 200) {
       var access_token = body.access_token;
       res.send({
@@ -148,25 +148,10 @@ app.get('/refresh_token', function(req, res) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 let http = require('http');
 let url = require('url');
-
+let static = require('node-static');
+let fileServer = new static.Server('.');
 let subscribers = Object.create(null);
 
 function onSubscribe(req, res) {
@@ -177,7 +162,7 @@ function onSubscribe(req, res) {
 
   subscribers[id] = res;
 
-  req.on('close', function() {
+  req.on('close', function () {
     delete subscribers[id];
   });
 
@@ -186,7 +171,7 @@ var id, count;
 let voting = []; //{ (id: , count: ), }
 //voting[id] = count;
 var i;
-for(i = 0; i < 5; i++){
+for (i = 0; i < 5; i++) {
   voting[i] = 0;
 }
 
@@ -194,7 +179,7 @@ function publish() {
 
   for (let id in subscribers) {
     let res = subscribers[id];
-    for (e in voting){
+    for (e in voting) {
       res.write(String(voting[e]));
     }
     res.end()
@@ -210,18 +195,18 @@ var totalSeconds = 0;
 setInterval(setTime, 1000);
 function setTime() {
   ++totalSeconds;
-  if( totalSeconds > 15){
+  if (totalSeconds > 15) {
     var max = 0
-    for(e in voting){
-      if(voting[e] > max){
+    for (e in voting) {
+      if (voting[e] > max) {
         max = e;
       }
       continue;
     }
     console.log(max);
     // playSong()
-  
-  
+
+
   }
 }
 var firstMsg = true;
@@ -239,12 +224,12 @@ function accept(req, res) {
     // accept POST
     req.setEncoding('utf8');
     let message = '';
-    req.on('data', function(chunk) {
+    req.on('data', function (chunk) {
       message += chunk;
-    }).on('end', function() {
-      for(key in voting){
-        if(message === key){
-          if(firstMsg === true){
+    }).on('end', function () {
+      for (key in voting) {
+        if (message === key) {
+          if (firstMsg === true) {
             setTime();
             firstMsg = false;
           }
@@ -259,6 +244,7 @@ function accept(req, res) {
     return;
   }
 
+  fileServer.serve(req, res);
 
 }
 
@@ -270,8 +256,23 @@ function close() {
 }
 
 
+if (!module.parent) {
+  http.createServer(accept).listen(8080);
+  console.log('Server running on port 8080');
+} else {
+  exports.accept = accept;
+
+  if (process.send) {
+    process.on('message', (msg) => {
+      if (msg === 'shutdown') {
+        close();
+      }
+    });
+  }
+
+  process.on('SIGINT', close);
+}
 
 
-
-console.log('Listening on 8888');
-app.listen(8888);
+// console.log('Listening on 8888');
+// app.listen(8888);

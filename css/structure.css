@@ -24,9 +24,10 @@ body {
 .container_mainvisible {
     position: absolute;
     height: 100vh;
-    width: 100vw;
+    width: 96vw;
     margin: 0;
     padding-left: 10px;
+    padding-right: 10px;
     display: grid;
     grid-template-columns: 14% 30% 55%;
     grid-template-rows: 10% 43% 44% 2%;
@@ -38,6 +39,8 @@ body {
     width: 100vw;
     margin: 0;
     padding-left: 10px;
+    padding-right: 10px;
+
     display: grid;
     grid-template-columns: 0 35% 65%;
     grid-template-rows: 10% 44% 44% 2%;
@@ -253,6 +256,7 @@ body {
 #container_header{
     background-color: transparent;
     margin-top: 15px;
+    padding-right: 0;
     grid-row: 1 / span 1;
     grid-column: 3 / span 1;
 }

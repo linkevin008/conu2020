@@ -4,10 +4,40 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="../css/structure.css">
+    <script src="../js/euphony.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!--    <script src="https://sdk.scdn.co/spotify-player.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script>
+    window.onSpotifyWebPlaybackSDKReady = () => {
+    const token = 'BQDMD-eG5AQ1UPJDBqU9hHBQUtb4jHWZcbLIFnIcfTyBcl0RIt0E_JQGNWfnCdsaYoCqqV4if_pIfz6lRGgHM5Yf37p_luJ7bEKopivLsE7HNxklN8s22EPxZ2NWTTeDMwJGyIHXXJoUIC2dsaBXKEqUlODIsZz0Foix';
+    const player = new Spotify.Player({
+        name: 'Web Playback SDK Quick Start Player',
+        getOAuthToken: cb => { cb(token); }
+    });
+    console.log('in here')
+    // Error handling
+    player.addListener('initialization_error', ({ message }) => { console.error(message); });
+    player.addListener('authentication_error', ({ message }) => { console.error(message); });
+    player.addListener('account_error', ({ message }) => { console.error(message); });
+    player.addListener('playback_error', ({ message }) => { console.error(message); });
 
+    // Playback status updates
+    player.addListener('player_state_changed', state => { console.log(state); });
+
+    // Ready
+    player.addListener('ready', ({ device_id }) => {
+        console.log('Ready with Device ID', device_id);
+    });
+
+    // Not Ready
+    player.addListener('not_ready', ({ device_id }) => {
+        console.log('Device ID has gone offline', device_id);
+    });
+
+    // Connect to the player!
+    player.connect();
+};</script>
 
 </head>
 
@@ -99,9 +129,7 @@
 
     </div>
     <script src="../js/spotifywebapiclient.js"></script>
-    <script src="../js/euphony.js" defer></script>
-    </div>
-
+    <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" width="0" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 </body>
 
 </html>

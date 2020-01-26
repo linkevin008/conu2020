@@ -1,52 +1,38 @@
 let albumresponse;
-
+let lastsongclicked;
 // window.onSpotifyWebPlaybackSDKReady = () => {
-//     const token = 'BQCwwSCEXykTwCke4rRboVeEbwNr5A_6ES2mYiX7AmEf4ab0df3XbhVpGPk7MbLHqfnnR9BhWmAxP_jRDG4zw5m_1ibK1xi9ZdlC-fREcrh8qYBhPNBFrEVtfKu7Q6oS3OEqySagliR5T0cI0t5JTSYkHLmuro9b7tEv';
+//     const token = 'BQAoqX1ozz9u-qGMsxJrYiFar9hAgGPrEUBKCAm1Np7u0POtbnilByDpY9CNi5vRyPY3Rk1VTV6Z4O-YOaDTV1OK3Ajd9SCqNRP4-VpcmKpdKCMqytziOHRs54ArVdMBVipX6-3SBayEA5eNef-LG87aoyMHKv51M9iC0lG9k-gH9RzKET70s85BmtlYBfCllkmPgVJdmV0Ssv6TXpPBA-pgtfeMtJhnq6GXof-vF01fkw0-5AcuL52mPzaYt9NyRfAOnjGj8G0wTiA';
 //     const player = new Spotify.Player({
 //         name: 'Web Playback SDK Quick Start Player',
 //         getOAuthToken: cb => { cb(token); }
 //     });
-//
+//     console.log('in here')
 //     // Error handling
 //     player.addListener('initialization_error', ({ message }) => { console.error(message); });
 //     player.addListener('authentication_error', ({ message }) => { console.error(message); });
 //     player.addListener('account_error', ({ message }) => { console.error(message); });
 //     player.addListener('playback_error', ({ message }) => { console.error(message); });
-//
+
 //     // Playback status updates
 //     player.addListener('player_state_changed', state => { console.log(state); });
-//
+
 //     // Ready
 //     player.addListener('ready', ({ device_id }) => {
 //         console.log('Ready with Device ID', device_id);
 //     });
-//
+
 //     // Not Ready
 //     player.addListener('not_ready', ({ device_id }) => {
 //         console.log('Device ID has gone offline', device_id);
 //     });
-//
+
 //     // Connect to the player!
 //     player.connect();
 // };
 
 
-// find template and compile it
-// var templateSource = document.getElementById('results-template').innerHTML,
-//     template = Handlebars.compile(templateSource),
-//     resultsPlaceholder = document.getElementById('results'),
-//     playingCssClass = 'playing',
-//     audioObject = null;
-// console.log('hellllllllllllllllllllllllllllllllllllo2');
 
-var fetchTracks = function (albumId, callback) {
-    $.ajax({
-        url: 'https://api.spotify.com/v1/albums/' + albumId,
-        success: function (response) {
-            callback(response);
-        }
-    });
-};
+
 
 var searchTracks = function (query) {
     $.ajax({
@@ -56,7 +42,7 @@ var searchTracks = function (query) {
             type: 'track'
         },
         headers: {
-            'Authorization': 'Bearer BQDQMgfVnKlWhMF1BLxangN95nOKrWS2tK8oJ4ouhFlH1kYtP4FU1soufu4OiGvTkcEaJI4SQ768uPso6RuTCgN6dWoYKLAnmk5dVqrkVhHYO4eDx8Egizo79L9qxRh7M_8wMR_7bxrS_ZUGLrbVXCJN0AB4RJd3QVXD'
+            'Authorization': 'Bearer BQC3PUjuzFiOwMCOFVNX0pum_eJO35F6I1XNhShvcJ4aJjODusq3dWTfYDYzuRi6rFZhpa57ZGFDabhytdJbtT0zRK98_q9d-mZpwMGp-iOnlsAYbrLPwfwljxtqHp_pJKw7Z5ieZLQJ-g6alprGeU7cqYAxzIz3g92b'
         },
         success: function (response) {
             // resultsPlaceholder.innerHTML = template(response);
@@ -71,7 +57,8 @@ var searchTracks = function (query) {
             //console.log(response)
             albumresponse = [];
             response.tracks.items.forEach(element => {
-                albumresponse.push([element.album.images[1], element.href, element.id, element.name])
+                //console.log(element)
+                albumresponse.push([element.album.images[1], element.uri, element.id, element.name])
             });
             displaysongs("albums");
         }
@@ -81,12 +68,12 @@ var searchTracks = function (query) {
 
 function displaysongs (div){
 
-    console.log("passed");
+    //console.log("passed");
     var mydiv = document.getElementById(div);
     while(mydiv.hasChildNodes()){
         mydiv.removeChild(mydiv.firstChild);
     }
-    console.log('mydiv:   ' + mydiv);
+    //console.log('mydiv:   ' + mydiv);
     let divs;
     let counter = 0;
     albumresponse.forEach(element => {
@@ -103,6 +90,10 @@ function displaysongs (div){
         divs.addEventListener('click',function (){
             console.log(element);
             changeplayerinfo(element);
+            console.log(element)
+            lastsongclicked = element[1];
+            //console.log(lastsongclicked);
+            setcurrson(lastsongclicked);
         });
 
         mydiv.appendChild(divs);

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<script src="browser.js"></script>
+<style>
+.pictureContainer {
+  width: 300px;
+  padding: 10px;
+  height: 200px;
+}
+
+.pictureFrame {
+  padding: 0;
+  width: 50px;
+  height: 50px;
+}</style>
+
+All visitors of this page will see messages of each other.
+
+<form name="publish">
+  <input type="text" name="message" />
+  <input type="submit" value="Send" />
+</form>
+
+<div id="subscribe">
+</div>
+
+<script>
+  new PublishForm(document.forms.publish, 'publish');
+  // random url parameter to avoid any caching issues
+  new SubscribePane(document.getElementById('subscribe'), 'subscribe?random=' + Math.random());
+</script>
+
+<body>
+  <div class="pictureContainer">
+    <!-- <div class="pictureFrame" >  -->
+      <button onclick= function() {
+
+      }>
+        <img id=0 src="./ai.jpeg" clickable=true>
+      </button>
+        
+    <!-- </div> -->
+    <!-- <div class="pictureFrame">  -->
+      <img id=1 src="./ai.jpeg">
+    <!-- </div> -->
+  </div>
+</body>
+  
+  

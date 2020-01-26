@@ -59,13 +59,14 @@ body {
 #euphony_logo{
     position: absolute;
    display: table-cell;
+    left: 6px;
+
     vertical-align: middle;
 }
 
 #euphony_logo_img {
-    padding-left: 5px;
-    padding-top: 5px;
-    width: 90%;
+    padding-top: 10px;
+    width: 50%;
 }
 
 #container_logo {

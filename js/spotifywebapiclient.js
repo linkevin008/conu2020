@@ -101,8 +101,8 @@ function displaysongs (div){
         divs.appendChild(img);
         divs.appendChild(text);
         divs.addEventListener('click',function (){
-            console.log(element)
-            //do whatever send to backend
+            console.log(element);
+            changeplayerinfo(element);
         });
 
         mydiv.appendChild(divs);

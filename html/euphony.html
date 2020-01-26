@@ -12,28 +12,11 @@
 </head>
 
 <body>
-    <script src="https://connect.soundcloud.com/sdk/sdk-3.3.2.js"></script>
-<!--    <script>-->
-<!--        SC.initialize({-->
-<!--            client_id: 'YOUR_CLIENT_ID'-->
-<!--        });-->
-
-<!--        // stream track id 293-->
-<!--        SC.stream('/tracks/293').then(function(player){-->
-<!--            player.play().then(function(){-->
-<!--                console.log('Playback started!');-->
-<!--            }).catch(function(e){-->
-<!--                console.error('Playback rejected. Try calling play() from a user interaction.', e);-->
-<!--            });-->
-<!--        });-->
-<!--    </script>-->
-
-
 
     <div id="container_main" class="container_mainhidden">
         <div id="container_logo">
             <div id="euphony_logo">
-<!--                <img id="euphony_logo_img" src="../pictures/euphonylogo.png" alt="euphonylogo">-->
+                <img id="euphony_logo_img" src="../pictures/euphonylogo.png" alt="euphonylogo">
             </div>
         </div>
 
@@ -91,8 +74,8 @@
                     <img id="artwork" src="https://goo.gl/ly1Brx" alt="artwork">
                 </div>
               <div class="content">
-                <div class="track"><i class="icon-music"></i>Track</div>
-                <div class="artist"><i class="icon-user"></i>Mount Kimbie</div>
+                <div id="track" class="track"><i class="icon-music"></i>Track</div>
+                <div id="artist" class="artist"><i class="icon-user"></i>Mount Kimbie</div>
 
 
                 <div id="timestamp">

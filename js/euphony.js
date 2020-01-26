@@ -21,14 +21,22 @@ Array.from(document.getElementsByClassName('playicon')).forEach(element => {
     console.log(divname);
     element.addEventListener('click', function () {
         eval(element.id+'()');
-
     });
 
 });
 
+document.getElementById('pause').addEventListener('click', pause);
 
 
-
+//Function to change the mount kimbie thing
+function changeplayerinfo(element){
+    let track = document.getElementById('track');
+    let artist = document.getElementById('artist');
+    let artwork = document.getElementById('artwork');
+    track.innerHTML = element[3];
+    artist.innerHTML = element[2];
+    artwork.setAttribute('src',element[0].url);
+}
 
 
 //Adding listener for menu button

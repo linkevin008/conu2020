@@ -76,7 +76,10 @@ var searchTracks = function (query) {
         }
     });
 };
-
+function playSong (element){
+    var uri = element[1];
+    
+}
 
 function displaysongs (div){
 
@@ -100,7 +103,7 @@ function displaysongs (div){
         divs.appendChild(img);
         divs.appendChild(text);
         divs.addEventListener('click',function (){
-            console.log(element)
+            playSong(element);
             //do whatever send to backend
         });
 

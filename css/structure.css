@@ -284,6 +284,7 @@ body {
 #container_social{
     grid-row: 3 / span 1;
     grid-column: 3 / span 1;
+    display: flex;
 }
 
 
@@ -480,4 +481,12 @@ progress, ::-webkit-progress-value {
     margin: 0 10px; 
 }
 
+ .album-container {
+    display: flex;
+}
+/* .album-pic {
+    width: 70px;
+    height: 70px;
+    text-align: center;
+}  */
 

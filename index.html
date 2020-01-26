@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
   <!-- <script src="../longpoll/browser.js"></script> -->
-    <script src="./browser.js"></script>
+  <script src="./browser.js"></script>
   <!-- <link rel="stylesheet" href="../css/structure.css"> -->
   <link rel="stylesheet" href="./css/structure.css">
   <script src="./js/euphony.js" defer></script>
@@ -86,9 +87,23 @@
       </div>
     </div>
 
-    
     <div id="container_social" class="container">Social
-      <form name="publish">
+      <div class="album-container" style="display: flex">
+        <div class="album-pic" style="height: 120px; width: 120px;"><img
+            src="./pictures/Post_Malone_-_Hollywood's_Bleeding.png" style="height: 120px; width: 120px;">Circles</div>
+        <div class="album-pic" style="height: 120px; width: 120px;">
+          <img src="./pictures/Post_Malone_-_Hollywood's_Bleeding.png" style="height: 120px; width: 120px;">Goodbyes ft.
+          Young Thug</div>
+        <div class="album-pic" style="height: 120px; width: 120px;">
+          <img src="./pictures/Post_Malone_-_Hollywood's_Bleeding.png" style="height: 120px; width: 120px;">Wow.</div>
+        <div class="album-pic" style="height: 120px; width: 120px;">
+          <img src="./pictures/Post_Malone_-_Hollywood's_Bleeding.png" style="height: 120px; width: 120px;">Sunflower
+        </div>
+        <div class="album-pic" style="height: 120px; width: 120px;">
+          <img src="./pictures/Post_Malone_-_Hollywood's_Bleeding.png" style="height: 120px; width: 120px;">Myself</div>
+      </div>
+
+      <form name="publish" style="position: absolute; bottom: 50px;">
         <input type="text" name="message" />
         <input type="submit" value="Send" />
       </form>
@@ -102,7 +117,7 @@
         new SubscribePane(document.getElementById('subscribe'), 'subscribe?random=' + Math.random());
       </script>
 
-     
+
     </div>
 
 

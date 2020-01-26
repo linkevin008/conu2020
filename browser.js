@@ -34,7 +34,7 @@ function SubscribePane(elem, url) {
 
   //update to show voting
   function showMessage(votes) {
-    console.log("ai");
+    // console.log("ai");
     console.log(votes);
     //let messageElem = document.createElement('div');
     //messageElem.append(message);

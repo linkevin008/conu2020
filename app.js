@@ -180,8 +180,9 @@ function publish() {
   for (let id in subscribers) {
     let res = subscribers[id];
     for (e in voting){
-      res.end(String(voting[e]));
+      res.write(String(voting[e]));
     }
+    res.end()
     //res.send(voting);
     //(voting);
     //res.end();
@@ -190,7 +191,25 @@ function publish() {
   subscribers = Object.create(null);
 }
 
-//ignored for now, not sure what it does
+var totalSeconds = 0;
+setInterval(setTime, 1000);
+function setTime() {
+  ++totalSeconds;
+  if( totalSeconds > 15){
+    var max = 0
+    for(e in voting){
+      if(voting[e] > max){
+        max = e;
+      }
+      continue;
+    }
+    console.log(max);
+    // playSong()
+  
+  
+  }
+}
+var firstMsg = true;
 function accept(req, res) {
   let urlParsed = url.parse(req.url, true);
 
@@ -210,6 +229,10 @@ function accept(req, res) {
     }).on('end', function() {
       for(key in voting){
         if(message === key){
+          if(firstMsg === true){
+            setTime();
+            firstMsg = false;
+          }
           voting[key]++;
         }
       }

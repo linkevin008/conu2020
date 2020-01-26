@@ -74,16 +74,22 @@ function showHideSidebar() {
     let c_sidebar = gebid('container_sidebar');
     let c_main = gebid('container_main');
     let c_menu =  gebid('container_menubutton');
+    let spotlog = gebid('spotlogo');
+    let soundlogo = gebid('soundlogo');
     if(c_sidebar.className==='container_sidebar'){
         setClass(c_main, 'container_mainhidden');
         setClass(c_sidebar, 'container_sidebarhidden');
         setClass(c_menu, 'container_menubuttonhidden');
+        setClass(spotlog, 'platformlogohidden');
+        setClass(soundlogo, 'platformlogohidden');
 
     }
     else{
         setClass(c_main, 'container_mainvisible');
         setClass(c_sidebar, 'container_sidebar');
         setClass(c_menu, '');
+        setClass(spotlog, 'platformlogo');
+        setClass(soundlogo, 'platformlogo');
     }
 
 

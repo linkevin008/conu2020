@@ -59,7 +59,7 @@ var searchTracks = function (query) {
             'Authorization': 'Bearer BQDQMgfVnKlWhMF1BLxangN95nOKrWS2tK8oJ4ouhFlH1kYtP4FU1soufu4OiGvTkcEaJI4SQ768uPso6RuTCgN6dWoYKLAnmk5dVqrkVhHYO4eDx8Egizo79L9qxRh7M_8wMR_7bxrS_ZUGLrbVXCJN0AB4RJd3QVXD'
         },
         success: function (response) {
-            resultsPlaceholder.innerHTML = template(response);
+            // resultsPlaceholder.innerHTML = template(response);
             // console.log('bruuuuuuh ' + template(response))
             // var res = resultsPlaceholder.innerHTML.replace("background","height:503;width:503;max-height:40%;max-width:40%;background")
             // document.write(res)
@@ -103,8 +103,6 @@ function displaysongs (div){
             console.log(element)
             //do whatever send to backend
         });
-
-
 
         mydiv.appendChild(divs);
         if (counter == 7) {

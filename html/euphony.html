@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../css/structure.css">
     <script src="../js/euphony.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<!--    <script src="https://sdk.scdn.co/spotify-player.js"></script>-->
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <script>
     window.onSpotifyWebPlaybackSDKReady = () => {
@@ -15,7 +15,7 @@
         name: 'Web Playback SDK Quick Start Player',
         getOAuthToken: cb => { cb(token); }
     });
-    console.log('in here')
+    console.log('in here');
     // Error handling
     player.addListener('initialization_error', ({ message }) => { console.error(message); });
     player.addListener('authentication_error', ({ message }) => { console.error(message); });
@@ -101,11 +101,11 @@
         <div id="container_player" class="container">
             <div class="music-player">
                 <div id="container_artwork">
-                    <img id="artwork" src="https://goo.gl/ly1Brx" alt="artwork">
+                    <img id="artwork" src="http://firehallartscentre.ca/wp/wp-content/uploads/2017/07/white-square-for-shit.jpg" alt="artwork">
                 </div>
               <div class="content">
                 <div id="track" class="track"><i class="icon-music"></i>Track</div>
-                <div id="artist" class="artist"><i class="icon-user"></i>Mount Kimbie</div>
+                <div id="artist" class="artist"><i class="icon-user"></i>Artist</div>
 
 
                 <div id="timestamp">
@@ -129,7 +129,7 @@
 
     </div>
     <script src="../js/spotifywebapiclient.js"></script>
-    <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" width="0" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    </div>
 </body>
 
 </html>

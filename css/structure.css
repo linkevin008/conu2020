@@ -58,15 +58,16 @@ body {
 
 #euphony_logo{
     position: absolute;
-   display: table-cell;
+    display: table-cell;
     left: 6px;
 
+    width: 260px;
     vertical-align: middle;
 }
 
 #euphony_logo_img {
     padding-top: 10px;
-    width: 50%;
+    width: 100%;
 }
 
 #container_logo {

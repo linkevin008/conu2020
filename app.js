@@ -100,7 +100,7 @@ app.get('/callback', function(req, res) {
 
         // use the access token to access the Spotify Web API
         request.get(options, function(error, response, body) {
-          // console.log('helllllllllllllooooo123123123123')
+          console.log('helllllllllllllooooo123123123123')
           console.log(body);
         });
 
@@ -148,10 +148,25 @@ app.get('/refresh_token', function(req, res) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 let http = require('http');
 let url = require('url');
-let static = require('node-static');
-let fileServer = new static.Server('.');
+
 let subscribers = Object.create(null);
 
 function onSubscribe(req, res) {
@@ -221,7 +236,6 @@ function accept(req, res) {
     return;
   }
 
-  fileServer.serve(req,res);
 
 }
 
@@ -233,25 +247,8 @@ function close() {
 }
 
 
-if (!module.parent) {
-  http.createServer(accept).listen(8080);
-  console.log('Server running on port 8080');
-} else {
-  exports.accept = accept;
-
-  if (process.send) {
-    process.on('message', (msg) => {
-      if (msg === 'shutdown') {
-        close();
-      }
-    });
-  }
-
-  process.on('SIGINT', close);
-}
 
 
-// console.log('Listening on 8888');
-// app.listen(8888);
 
-
+console.log('Listening on 8888');
+app.listen(8888);

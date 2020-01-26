@@ -94,20 +94,20 @@
 
 <script>
 // find template and compile it
-var templateSource = document.getElementById('results-template').innerHTML,
-    template = Handlebars.compile(templateSource),
-    resultsPlaceholder = document.getElementById('results'),
-    playingCssClass = 'playing',
-    audioObject = null;
-    console.log('hellllllllllllllllllllllllllllllllllllo2');
-var fetchTracks = function (albumId, callback) {
-    $.ajax({
-        url: 'https://api.spotify.com/v1/albums/' + albumId,
-        success: function (response) {
-            callback(response);
-        }
-    });
-};
+// var templateSource = document.getElementById('results-template').innerHTML,
+//     template = Handlebars.compile(templateSource),
+//     resultsPlaceholder = document.getElementById('results'),
+//     playingCssClass = 'playing',
+//     audioObject = null;
+//     console.log('hellllllllllllllllllllllllllllllllllllo2');
+// var fetchTracks = function (albumId, callback) {
+//     $.ajax({
+//         url: 'https://api.spotify.com/v1/albums/' + albumId,
+//         success: function (response) {
+//             callback(response);
+//         }
+//     });
+// };
 
 var searchTracks = function (query) {
     $.ajax({

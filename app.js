@@ -15,7 +15,7 @@ var cookieParser = require('cookie-parser');
 
 var client_id = '40ba1b7ed3554ca09d9718fcbf46c193'; // Your client id
 var client_secret = 'd65e3996504c4ee1854afedf18a53272'; // Your secret
-var redirect_uri = 'http://localhost:8888/test.html'; // Your redirect uri
+var redirect_uri = 'http://localhost:8888/html/euphony.html'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -36,7 +36,7 @@ var stateKey = 'spotify_auth_state';
 
 var app = express();
 
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname))
    .use(cors())
    .use(cookieParser());
 

@@ -41,7 +41,7 @@
     let albumresponse;
 
     window.onSpotifyWebPlaybackSDKReady = () => {
-      const token = 'BQCwwSCEXykTwCke4rRboVeEbwNr5A_6ES2mYiX7AmEf4ab0df3XbhVpGPk7MbLHqfnnR9BhWmAxP_jRDG4zw5m_1ibK1xi9ZdlC-fREcrh8qYBhPNBFrEVtfKu7Q6oS3OEqySagliR5T0cI0t5JTSYkHLmuro9b7tEv';
+      const token = 'BQAKceL6_b_ByDD8qkkr_n6H2S_HwNoFbFJrDOjMWYpkCfTwXe29Qeei7t_oHkk25NoDnHYFnJkBqf_LNA_eQMJP0XojayGGPu9UERvsCeyt5j546beBHPn18mgE7a3_b9PJ3b4OlzjAJ_DABwNqHu5xJ5LofWMSPi3c';
       const player = new Spotify.Player({
         name: 'Web Playback SDK Quick Start Player',
         getOAuthToken: cb => { cb(token); }
@@ -117,7 +117,7 @@ var searchTracks = function (query) {
             type: 'track'
         },
         headers: {
-        'Authorization': 'Bearer BQCwwSCEXykTwCke4rRboVeEbwNr5A_6ES2mYiX7AmEf4ab0df3XbhVpGPk7MbLHqfnnR9BhWmAxP_jRDG4zw5m_1ibK1xi9ZdlC-fREcrh8qYBhPNBFrEVtfKu7Q6oS3OEqySagliR5T0cI0t5JTSYkHLmuro9b7tEv'
+        'Authorization': 'Bearer BQAKceL6_b_ByDD8qkkr_n6H2S_HwNoFbFJrDOjMWYpkCfTwXe29Qeei7t_oHkk25NoDnHYFnJkBqf_LNA_eQMJP0XojayGGPu9UERvsCeyt5j546beBHPn18mgE7a3_b9PJ3b4OlzjAJ_DABwNqHu5xJ5LofWMSPi3c'
       },
         success: function (response) {
             resultsPlaceholder.innerHTML = template(response);

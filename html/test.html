@@ -39,7 +39,7 @@
     let albumresponse;
 
     window.onSpotifyWebPlaybackSDKReady = () => {
-      const token = 'BQD_qjzLPgRJNmdCJk8uOor2IGYmOC4x6OLdZ0hzoCjybb1anwor8CS3GCm8yYql9LYsZRbclbNZf5c9QZZMDwfoQpbdxd0ClRNHHI0qqM0YzZxxoXRnHy7PRnVTIvnms2ZWC03MIwBBxuxAXr0xvcMs9KqFuFd320eFGeOP4a1ai4N_ER9UozbjXpCeeqU0I59Pa5eZ0zkmnMLCZVVQSO7AY47oZH2RJ8inrD6rxLFwS5Y3UZIBSc4xFDP0g2ElQyulwglt_wnuvKo';
+      const token = 'BQCr8B1zSf5E1NHyfXuvHYalUV1B5TXdEENcWjzjq7lzzQphuGWE7Jd6M6olo-hnM44-AsJYixHA2rISlypzF7Yh4mtG_B8RT_ynlrO9-1gYnO1xFZ2xg3Is13UFmdblKzXffRogo9rbM8qulFJANZW54ZxHz088uf7ejEE1cAHKXa0bebcgEx25R5oqgSvOM2LE8L7PtV2lbcxUP1DiMyu4yGyFCfdBNFM42EBFcOrbwErVDPYXkEfIxFuy3WMqxYA2svRcDbp1vEM';
       const player = new Spotify.Player({
         name: 'Web Playback SDK Quick Start Player',
         getOAuthToken: cb => { cb(token); }

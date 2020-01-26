@@ -1,7 +1,7 @@
 /* MACROS */
 //Macro for getelementbyid
 function gebid(string){ return document.getElementById(string); }
-let token = 'BQD_qjzLPgRJNmdCJk8uOor2IGYmOC4x6OLdZ0hzoCjybb1anwor8CS3GCm8yYql9LYsZRbclbNZf5c9QZZMDwfoQpbdxd0ClRNHHI0qqM0YzZxxoXRnHy7PRnVTIvnms2ZWC03MIwBBxuxAXr0xvcMs9KqFuFd320eFGeOP4a1ai4N_ER9UozbjXpCeeqU0I59Pa5eZ0zkmnMLCZVVQSO7AY47oZH2RJ8inrD6rxLFwS5Y3UZIBSc4xFDP0g2ElQyulwglt_wnuvKo';
+let token = 'BQCHyLmQJUGKv0eOXdnThNDB00h9d_0B0SfssOS17aYOuTPyMx4jGBjks2wFtuwDoK2HMXfEhped2uTuPoZ524zVEoF8RVK_GCFc1hGV1OMUHh1CQliVeaX6TYHRYElkd98BnxNpvymztDcNg_SX-lT2ZkqwrMpRIDSnbq5gLuZoOXRDL7yEREKkJyvx9DwCAxWC5PJP5k-bWAxemmmTTH1c1Ymi029r-V95HOltXTgBrj5hrzbwojbkciyO8zTwF1eH40mJ_Es4Os4';
 function setClass(obj, objclass){
     obj.setAttribute('class', objclass);
 }
@@ -93,6 +93,7 @@ function play() {
 }
 
 function pause() {
+    console.log('here')
     var pausesong = function () {
         let id = query.split(":");
         $.ajax({

@@ -60,6 +60,7 @@ var searchTracks = function (query) {
         },
         success: function (response) {
             // resultsPlaceholder.innerHTML = template(response);
+            //resultsPlaceholder.innerHTML = template(response);
             // console.log('bruuuuuuh ' + template(response))
             // var res = resultsPlaceholder.innerHTML.replace("background","height:503;width:503;max-height:40%;max-width:40%;background")
             // document.write(res)

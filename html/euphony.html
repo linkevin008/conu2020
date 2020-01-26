@@ -10,6 +10,7 @@
 
 
 </head>
+
 <body>
     <script src="https://connect.soundcloud.com/sdk/sdk-3.3.2.js"></script>
     <script>
@@ -38,20 +39,30 @@
 
 
 
-        <div id="container_header" class="container">
-            <div id="container_searchbar">
-                <div id="container_searchbaraggregate">
-                    <div id="container_searchlogo" class="container_searchlogo">
-                        <img id="searchlogo" src="../pictures/searchlogo.png" alt="searchlogo">
-                    </div>
-                    <div id="container_textarea">
-                        <input type="text" id="searchbar" rows="1">
-                    </div>
-                </div>
-
-            </div>
-
+    <div id="container_header" class="container">
+      <div id="container_searchbar">
+        <div id="container_searchbaraggregate">
+          <div id="container_searchlogo" class="container_searchlogo">
+            <img id="searchlogo" src="../pictures/searchlogo.png" alt="searchlogo">
+          </div>
+          <div id="container_textarea">
+            <input type="text" id="searchbar" rows="1">
+          </div>
         </div>
+
+      </div>
+
+    </div>
+
+    <div id="container_sidebar" class="container_sidebarhidden">
+      <div id="container_menubutton" class="container_menubuttonhidden">
+        <div id="nav-icon3">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
 
         <div id="container_sidebar" class="container_sidebarhidden">
             <div id="container_menubutton" class="container_menubuttonhidden">
@@ -74,14 +85,19 @@
 
                 </div>
             </div>
+          </div>
 
-        </div>
+    <div id="container_browser" class="container">Browser
+      <div id="albums">
 
-        <div id="container_browser" class="container">Browser
-            <div id="albums">
+      </div>
+      <div id="resizebar"></div>
+    </div>
 
-            </div>
-            <div id="resizebar"></div>
+    <div id="container_player" class="container">
+      <div class="music-player">
+        <div id="container_artwork">
+          <img id="artwork" src="https://goo.gl/ly1Brx" alt="artwork">
         </div>
 
         <div id="container_player" class="container">
@@ -111,17 +127,31 @@
               </div>
             </div>
         </div>
+      </div>
+    </div>
 
-        <div id="container_social" class="container">Social
+    
+    <div id="container_social" class="container">Social
+      <form name="publish">
+        <input type="text" name="message" />
+        <input type="submit" value="Send" />
+      </form>
 
-        </div>
+      <div id="subscribe">
+      </div>
 
+      <script>
+        new PublishForm(document.forms.publish, 'publish');
+        // random url parameter to avoid any caching issues
+        new SubscribePane(document.getElementById('subscribe'), 'subscribe?random=' + Math.random());
+      </script>
 
-
+     
     </div>
     <script src="../js/spotifywebapiclient.js"></script>
     <script src="../js/euphony.js" defer></script>
 
 
 </body>
+
 </html>

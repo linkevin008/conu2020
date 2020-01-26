@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{bootstrap, handlebars, jquery-1.10.1, jquery-3.4.1, spotify-player}" />
+    <file url="PROJECT" libraries="{bootstrap, handlebars, jquery-1.10.1, jquery-3.4.1, sdk-3.3.2, spotify-player}" />
   </component>
 </project>

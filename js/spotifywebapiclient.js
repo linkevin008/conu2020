@@ -45,6 +45,7 @@ var searchTracks = function (query) {
             'Authorization': 'Bearer BQC3PUjuzFiOwMCOFVNX0pum_eJO35F6I1XNhShvcJ4aJjODusq3dWTfYDYzuRi6rFZhpa57ZGFDabhytdJbtT0zRK98_q9d-mZpwMGp-iOnlsAYbrLPwfwljxtqHp_pJKw7Z5ieZLQJ-g6alprGeU7cqYAxzIz3g92b'
         },
         success: function (response) {
+            // resultsPlaceholder.innerHTML = template(response);
             //resultsPlaceholder.innerHTML = template(response);
             // console.log('bruuuuuuh ' + template(response))
             // var res = resultsPlaceholder.innerHTML.replace("background","height:503;width:503;max-height:40%;max-width:40%;background")
@@ -92,8 +93,6 @@ function displaysongs (div){
             //console.log(lastsongclicked);
             setcurrson(lastsongclicked);
         });
-
-
 
         mydiv.appendChild(divs);
         if (counter == 7) {

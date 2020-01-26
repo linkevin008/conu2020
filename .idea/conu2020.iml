@@ -9,5 +9,6 @@
     <orderEntry type="library" name="handlebars" level="application" />
     <orderEntry type="library" name="jquery-1.10.1" level="application" />
     <orderEntry type="library" name="spotify-player" level="application" />
+    <orderEntry type="library" name="sdk-3.3.2" level="application" />
   </component>
 </module>

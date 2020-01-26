@@ -126,18 +126,37 @@ function showHideSidebar() {
     let c_sidebar = gebid('container_sidebar');
     let c_main = gebid('container_main');
     let c_menu =  gebid('container_menubutton');
+    let spotlog = gebid('spotifylogo');
+    let soundlogo = gebid('soundcloudlogo');
     if(c_sidebar.className==='container_sidebar'){
         setClass(c_main, 'container_mainhidden');
         setClass(c_sidebar, 'container_sidebarhidden');
         setClass(c_menu, 'container_menubuttonhidden');
+        setClass(spotlog, 'logodivhidden');
+        setClass(soundlogo, 'logodivhidden');
 
     }
-    else{
+    else {
         setClass(c_main, 'container_mainvisible');
         setClass(c_sidebar, 'container_sidebar');
         setClass(c_menu, '');
+        setClass(spotlog, 'logodiv');
+        setClass(soundlogo, 'logodiv');
     }
-
-
 }
 
+function streamersLogoEventListener(){
+    console.log("james");
+    let spotlog = gebid('spotifylogo');
+    let soundlogo = gebid('soundcloudlogo');
+    spotlog.addEventListener('click', function () {
+        if(spotlog.className==="logodiv"){ this.setAttribute('class', 'logodivselected'); }
+        else { spotlog.setAttribute('class', 'logodiv');}
+    });
+    soundlogo.addEventListener('click', function () {
+        if(soundlogo.className==="logodiv"){ this.setAttribute('class', 'logodivselected'); }
+        else { soundlogo.setAttribute('class', 'logodiv');}
+    });
+}
+
+streamersLogoEventListener();

@@ -11,6 +11,24 @@
 
 </head>
 <body>
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.3.2.js"></script>
+    <script>
+        SC.initialize({
+            client_id: 'YOUR_CLIENT_ID'
+        });
+
+        // stream track id 293
+        SC.stream('/tracks/293').then(function(player){
+            player.play().then(function(){
+                console.log('Playback started!');
+            }).catch(function(e){
+                console.error('Playback rejected. Try calling play() from a user interaction.', e);
+            });
+        });
+    </script>
+
+
+
     <div id="container_main" class="container_mainhidden">
         <div id="container_logo">
             <div id="euphony_logo">
@@ -45,12 +63,15 @@
                 </div>
             </div>
             <div id="selectplatform">
-                <div id="spotifylogo" class="logodiv">
-                    <img id="spotlogo" class="platformlogohidden" src="../pictures/spotifylogo.png" alt="spotlogo"/>
+                <div id="spotifylogo" class="logodivhidden">
+                    <img id="spotlogo" class="platformlogo" src="../pictures/spotifylogo.png" alt="spotlogo"/>
+                    <div class="streamersp">Toggle Spotify</div>
                 </div>
 
-                <div id="soundcloudlogo" class="logodiv">
-                    <img id="soundlogo" class="platformlogohidden" src="../pictures/soundcloud.png" alt="soundlogo"/>
+                <div id="soundcloudlogo" class="logodivhidden">
+                    <img id="soundlogo" class="platformlogo" src="../pictures/soundcloud.png" alt="soundlogo"/>
+                    <div class="streamersp">Toggle Soundcloud</div>
+
                 </div>
             </div>
 
@@ -83,7 +104,7 @@
                     <img id="skipback" class="playicon"  src="../pictures/playicons/skipback.png"/>
                     <img id="rewind" class="playicon" src="../pictures/playicons/rewind.png"/>
                     <img id="play" class="playicon" src="../pictures/playicons/play.png"/>
-                    <img id="pause" class="playicon" src="../pictures/playicons/pause.png"/>
+                    <img id="pause" class="playiconhidden" src="../pictures/playicons/pause.png"/>
                     <img id="forward" class="playicon" src="../pictures/playicons/forward.png"/>
                     <img id="end" class="playicon" src="../pictures/playicons/end.png"/>
                 </div>

@@ -1,26 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-  <!-- <script src="../longpoll/browser.js"></script> -->
-  <script src="./browser.js"></script>
-  <!-- <link rel="stylesheet" href="../css/structure.css"> -->
-  <link rel="stylesheet" href="./css/structure.css">
-  <script src="../js/euphony.js" defer></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <!--    <script src="https://sdk.scdn.co/spotify-player.js"></script>-->
-  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/structure.css">
+    <script src="../js/euphony.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script>
+    window.onSpotifyWebPlaybackSDKReady = () => {
+    const token = 'BQDMD-eG5AQ1UPJDBqU9hHBQUtb4jHWZcbLIFnIcfTyBcl0RIt0E_JQGNWfnCdsaYoCqqV4if_pIfz6lRGgHM5Yf37p_luJ7bEKopivLsE7HNxklN8s22EPxZ2NWTTeDMwJGyIHXXJoUIC2dsaBXKEqUlODIsZz0Foix';
+    const player = new Spotify.Player({
+        name: 'Web Playback SDK Quick Start Player',
+        getOAuthToken: cb => { cb(token); }
+    });
+    console.log('in here');
+    // Error handling
+    player.addListener('initialization_error', ({ message }) => { console.error(message); });
+    player.addListener('authentication_error', ({ message }) => { console.error(message); });
+    player.addListener('account_error', ({ message }) => { console.error(message); });
+    player.addListener('playback_error', ({ message }) => { console.error(message); });
+
+    // Playback status updates
+    player.addListener('player_state_changed', state => { console.log(state); });
+
+    // Ready
+    player.addListener('ready', ({ device_id }) => {
+        console.log('Ready with Device ID', device_id);
+    });
+
+    // Not Ready
+    player.addListener('not_ready', ({ device_id }) => {
+        console.log('Device ID has gone offline', device_id);
+    });
+
+    // Connect to the player!
+    player.connect();
+};</script>
 
 </head>
 
 <body>
-  <div id="container_main" class="container_mainhidden">
-    <div id="container_logo">
-      <div id="euphony_logo">
-        <!--                <img id="euphony_logo_img" src="../pictures/euphonylogo.png" alt="euphonylogo">-->
-      </div>
-    </div>
+
+    <div id="container_main" class="container_mainhidden">
+        <div id="container_logo">
+            <div id="euphony_logo">
+                <img id="euphony_logo_img" src="../pictures/euphonylogo.png" alt="euphonylogo">
+            </div>
+        </div>
 
 
 
@@ -34,22 +62,32 @@
             <input type="text" id="searchbar" rows="1">
           </div>
         </div>
-
       </div>
-
     </div>
+
 
     <div id="container_sidebar" class="container_sidebarhidden">
-      <div id="container_menubutton" class="container_menubuttonhidden">
-        <div id="nav-icon3">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
+            <div id="container_menubutton" class="container_menubuttonhidden">
+                <div id="nav-icon3">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div id="selectplatform">
+                <div id="spotifylogo" class="logodivhidden">
+                    <img id="spotlogo" class="platformlogo" src="../pictures/spotifylogo.png" alt="spotlogo"/>
+                    <div class="streamersp">Toggle Spotify</div>
+                </div>
 
-    </div>
+                <div id="soundcloudlogo" class="logodivhidden">
+                    <img id="soundlogo" class="platformlogo" src="../pictures/soundcloud.png" alt="soundlogo"/>
+                    <div class="streamersp">Toggle Soundcloud</div>
+
+                </div>
+            </div>
+     </div>
 
     <div id="container_browser" class="container">Browser
       <div id="albums">
@@ -58,58 +96,40 @@
       <div id="resizebar"></div>
     </div>
 
-    <div id="container_player" class="container">
-      <div class="music-player">
-        <div id="container_artwork">
-          <img id="artwork" src="https://goo.gl/ly1Brx" alt="artwork">
-        </div>
-        <div class="content">
-          <div class="track"><i class="icon-music"></i>Track</div>
-          <div class="artist"><i class="icon-user"></i>Mount Kimbie</div>
 
-          <progress id="progress" value="0" max="100">
-            <div class="tracker active"></div>
-          </progress>
-          <div id="timestamp">
-            <span id="start">0:00</span>
-            <span id="stop" style="float:right;">4:42</span>
-          </div>
-          <div id="playcontrols">
-            <img id="skipback" class="playicon" src="../pictures/playicons/skipback.png" />
-            <img id="rewind" class="playicon" src="../pictures/playicons/rewind.png" />
-            <img id="play" class="playicon" src="../pictures/playicons/play.png" />
-            <img id="pause" class="playicon" src="../pictures/playicons/pause.png" />
-            <img id="forward" class="playicon" src="../pictures/playicons/forward.png" />
-            <img id="end" class="playicon" src="../pictures/playicons/end.png" />
-          </div>
+
+        <div id="container_player" class="container">
+            <div class="music-player">
+                <div id="container_artwork">
+                    <img id="artwork" src="http://firehallartscentre.ca/wp/wp-content/uploads/2017/07/white-square-for-shit.jpg" alt="artwork">
+                </div>
+              <div class="content">
+                <div id="track" class="track"><i class="icon-music"></i>Track</div>
+                <div id="artist" class="artist"><i class="icon-user"></i>Artist</div>
+
+
+                <div id="timestamp">
+                    <span id="start">0:00</span>
+                    <span id="stop" style="float:right;">4:42</span>
+                </div>
+                <div id="playcontrols">
+                    <img id="skipback" class="playicon"  src="../pictures/playicons/skipback.png" alt=""/>
+                    <img id="rewind" class="playicon" src="../pictures/playicons/rewind.png" alt=""/>
+                    <img id="play" class="playicon" src="../pictures/playicons/play.png" alt=""/>
+                    <img id="pause" class="playiconhidden" src="../pictures/playicons/pause.png" alt=""/>
+                    <img id="forward" class="playicon" src="../pictures/playicons/forward.png" alt=""/>
+                    <img id="end" class="playicon" src="../pictures/playicons/end.png" alt=""/>
+                </div>
+              </div>
+            </div>
         </div>
-      </div>
-    </div>
 
     
     <div id="container_social" class="container">Social
-      <form name="publish">
-        <input type="text" name="message" />
-        <input type="submit" value="Send" />
-      </form>
 
-      <div id="subscribe">
-      </div>
-
-      <script>
-        new PublishForm(document.forms.publish, 'publish');
-        // random url parameter to avoid any caching issues
-        new SubscribePane(document.getElementById('subscribe'), 'subscribe?random=' + Math.random());
-      </script>
-
-     
     </div>
-
-
-
-  </div>
-  <script src="../js/spotifywebapiclient.js"></script>
-
+    <script src="../js/spotifywebapiclient.js"></script>
+    </div>
 </body>
 
 </html>

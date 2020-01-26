@@ -15,7 +15,7 @@ var cookieParser = require('cookie-parser');
 
 var client_id = '40ba1b7ed3554ca09d9718fcbf46c193'; // Your client id
 var client_secret = 'd65e3996504c4ee1854afedf18a53272'; // Your secret
-var redirect_uri = 'http://localhost:8888/test.html'; // Your redirect uri
+var redirect_uri = 'http://localhost:8888/html/euphony.html'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -36,7 +36,7 @@ var stateKey = 'spotify_auth_state';
 
 var app = express();
 
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname))
    .use(cors())
    .use(cookieParser());
 
@@ -144,62 +144,113 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let http = require('http');
+let url = require('url');
+
+let subscribers = Object.create(null);
+
+function onSubscribe(req, res) {
+  let id = Math.random();
+
+  res.setHeader('Content-Type', 'text/plain;charset=utf-8');
+  res.setHeader("Cache-Control", "no-cache, must-revalidate");
+
+  subscribers[id] = res;
+
+  req.on('close', function() {
+    delete subscribers[id];
+  });
+
+}
+var id, count;
+let voting = []; //{ (id: , count: ), }
+//voting[id] = count;
+var i;
+for(i = 0; i < 5; i++){
+  voting[i] = 0;
+}
+
+function publish() {
+
+  for (let id in subscribers) {
+    let res = subscribers[id];
+    for (e in voting){
+      res.end(String(voting[e]));
+    }
+    //res.send(voting);
+    //(voting);
+    //res.end();
+  }
+
+  subscribers = Object.create(null);
+}
+
+//ignored for now, not sure what it does
+function accept(req, res) {
+  let urlParsed = url.parse(req.url, true);
+
+  // new client wants messages
+  if (urlParsed.pathname == '/subscribe') {
+    onSubscribe(req, res);
+    return;
+  }
+
+  // sending a message
+  if (urlParsed.pathname == '/publish' && req.method == 'POST') {
+    // accept POST
+    req.setEncoding('utf8');
+    let message = '';
+    req.on('data', function(chunk) {
+      message += chunk;
+    }).on('end', function() {
+      for(key in voting){
+        if(message === key){
+          voting[key]++;
+        }
+      }
+      console.log(voting);
+      publish(); // publish it to everyone
+      res.end("ok");
+    });
+
+    return;
+  }
+
+
+}
+
+function close() {
+  for (let id in subscribers) {
+    let res = subscribers[id];
+    res.end();
+  }
+}
+
+
+
+
+
 console.log('Listening on 8888');
 app.listen(8888);
 
-// var templateSource = document.getElementById('results-template').innerHTML,
-//     template = Handlebars.compile(templateSource),
-//     resultsPlaceholder = document.getElementById('results'),
-//     playingCssClass = 'playing',
-//     audioObject = null;
-//     console.log('hellllllllllllllllllllllllllllllllllllo2');
-// var fetchTracks = function (albumId, callback) {
-//     $.ajax({
-//         url: 'https://api.spotify.com/v1/albums/' + albumId,
-//         success: function (response) {
-//             callback(response);
-//         }
-//     });
-// };
-// console.log('hellllllllllllllllllllllllllllllllllllo');
-// var searchAlbums = function (query) {
-//     $.ajax({
-//         url: 'https://api.spotify.com/v1/search',
-//         data: {
-//             q: query,
-//             type: 'album'
-//         },
-//         success: function (response) {
-//             resultsPlaceholder.innerHTML = template(response);
-//         }
-//     });
-// };
-// console.log('hellllllllllllllllllllllllllllllllllllo');
-// results.addEventListener('click', function (e) {
-//     var target = e.target;
-//     if (target !== null && target.classList.contains('cover')) {
-//         if (target.classList.contains(playingCssClass)) {
-//             audioObject.pause();
-//         } else {
-//             if (audioObject) {
-//                 audioObject.pause();
-//             }
-//             fetchTracks(target.getAttribute('data-album-id'), function (data) {
-//                 audioObject = new Audio(data.tracks.items[0].preview_url);
-//                 audioObject.play();
-//                 target.classList.add(playingCssClass);
-//                 audioObject.addEventListener('ended', function () {
-//                     target.classList.remove(playingCssClass);
-//                 });
-//                 audioObject.addEventListener('pause', function () {
-//                     target.classList.remove(playingCssClass);
-//                 });
-//             });
-//         }
-//     }
-// });
-// console.log('hellllllllllllllllllllllllllllllllllllo');
-// document.getElementById('search-form').addEventListener('submit', function (e) {
-//     e.preventDefault();
-//     searchAlbums(document.getElementById('query').value);
-// }, false);
+

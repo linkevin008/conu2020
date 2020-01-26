@@ -31,7 +31,7 @@ let lastsongclicked;
 // };
 
 
-
+//let token = 'BQAn_g6j76JNUfkpJjq6yihTZQJKMrFSbUbhVeczxuhsYzh13RRYhlHzu0gsfK2yrLRIX-g2NG8Aae-MbiM_9fVz-uAtRoPlvGoAMPhUz7mrEYuwkc__1P3wqg6iTfeBrI5Adg1t8eq_Qh_fuXvRG3xC25CNReglZVkt';
 
 
 var searchTracks = function (query) {
@@ -42,7 +42,7 @@ var searchTracks = function (query) {
             type: 'track'
         },
         headers: {
-            'Authorization': 'Bearer BQC3PUjuzFiOwMCOFVNX0pum_eJO35F6I1XNhShvcJ4aJjODusq3dWTfYDYzuRi6rFZhpa57ZGFDabhytdJbtT0zRK98_q9d-mZpwMGp-iOnlsAYbrLPwfwljxtqHp_pJKw7Z5ieZLQJ-g6alprGeU7cqYAxzIz3g92b'
+            'Authorization': 'Bearer ' + token
         },
         success: function (response) {
             // resultsPlaceholder.innerHTML = template(response);
@@ -57,8 +57,8 @@ var searchTracks = function (query) {
             //console.log(response)
             albumresponse = [];
             response.tracks.items.forEach(element => {
-                //console.log(element)
-                albumresponse.push([element.album.images[1], element.uri, element.id, element.name])
+                console.log(element)
+                albumresponse.push([element.album.images[1], element.uri, element.artists[0].name, element.name])
             });
             displaysongs("albums");
         }

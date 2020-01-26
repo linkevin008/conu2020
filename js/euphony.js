@@ -1,7 +1,7 @@
 /* MACROS */
 //Macro for getelementbyid
 function gebid(string){ return document.getElementById(string); }
-let token = 'BQCHyLmQJUGKv0eOXdnThNDB00h9d_0B0SfssOS17aYOuTPyMx4jGBjks2wFtuwDoK2HMXfEhped2uTuPoZ524zVEoF8RVK_GCFc1hGV1OMUHh1CQliVeaX6TYHRYElkd98BnxNpvymztDcNg_SX-lT2ZkqwrMpRIDSnbq5gLuZoOXRDL7yEREKkJyvx9DwCAxWC5PJP5k-bWAxemmmTTH1c1Ymi029r-V95HOltXTgBrj5hrzbwojbkciyO8zTwF1eH40mJ_Es4Os4';
+let token = 'BQBIlLscRWmPp3qLjZGF_LJ_KB-FnnzpxOweR9ZB6f5voUuwCUZNGnp1vylWtMe2W-lOzRBZ1LYQA3n_-lYwtACWcBloATxHg2Y__Yh-vEsaWrsToEWmkokIOlqZ8GUPPMs_N9Xchtvy0gHhK_AoJUAOdD4VRQoyxvhdmO06Tjct_VQ71FgDIuUHP70FV4JHbO0JKBNRn8UKtIrcEdoEZrdVGzfbhScLFfVZFiHGwi8VRSsCdUBeitKCF4ynQA1oehfp8mV2hZckqHc';
 function setClass(obj, objclass){
     obj.setAttribute('class', objclass);
 }
@@ -104,7 +104,6 @@ function play() {
 function pause() {
     console.log('here')
     var pausesong = function () {
-        let id = query.split(":");
         $.ajax({
             url: 'https://api.spotify.com/v1/me/player/pause',
             type: 'PUT',
@@ -119,6 +118,8 @@ function pause() {
           });
         }  
         pausesong()
+        document.getElementById('play').setAttribute('class','playicon');
+        document.getElementById('pause').setAttribute('class','playiconhidden');
 }
 
 function forward() {

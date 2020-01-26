@@ -262,6 +262,7 @@ body {
     grid-row: 2 / span 1;
     grid-column: 2 / span 2;
     position: relative;
+    overflow-y: scroll;
 }
 
 #resizebar{
